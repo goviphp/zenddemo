@@ -1,0 +1,22 @@
+{
+    "name": "zendframework/zendapp",
+    "description": "this is sample app",
+	"keywords": [
+        "framework",
+        "zf1"
+    ],
+	"type": "library",
+    "require": {
+        "zendframework/zendframework1": "1.12.11",
+        "php": ">=5.2.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.1"
+    },
+    "authors": [
+        {
+            "name": "admin",
+            "email": "admin@admin.com"
+        }
+    ]
+}
