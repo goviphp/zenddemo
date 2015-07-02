@@ -1,0 +1,167 @@
+<div class="layout-top-nav">
+	<div class="wrapper">
+		<header class="main-header">               
+			<nav class="navbar navbar-static-top">
+			  <div class="container-fluid">
+				  <div class="navbar-header">
+					<a href="#" class="navbar-brand"><b>Test</b>App</a>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					  <i class="fa fa-bars"></i>
+					</button>
+				  </div>
+
+				  <div class="collapse navbar-collapse" id="navbar-collapse">            
+					<ul class="nav navbar-nav navbar-right">
+					  <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello Administrator! <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						  <li><a href="/logout">Logout</a></li>
+						</ul>
+					  </li>
+					</ul>
+				  </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</header>
+	
+		<div class="content-wrapper" style="min-height: 900px;">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			  <h1>
+				Sales List Page
+				<small>Preview of monthly sales</small>
+			  </h1>
+			  <ol class="breadcrumb">
+				<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li class="active">List Page</li>
+			  </ol>
+			</section>
+			<?php
+				$mgr_sales =Zend_Registry::get('mgr_sales');
+				$request = new Zend_Controller_Request_Http();
+				$ref = $request->getParam('ref');
+			?>
+			
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="box">
+							<div class="box-header">
+							  <h3 class="box-title">Current Month Sales</h3>
+							</div><!-- /.box-header -->
+							<div class="box-body">
+								 <div class="form-group">
+									<label for="mgr_id">Id :</label>
+									<span><?php echo $mgr_sales[$ref]['mgr_id'];?></span>
+								 </div>
+								 <div class="form-group">
+									<label for="mgr_id">Manager Name :</label>
+									<span><?php echo $mgr_sales[$ref]['mgr_name'];?></span>
+								 </div>
+								 <div class="form-group">
+									<label for="mgr_id">Sales % :</label>
+									<span><?php echo $mgr_sales[$ref]['mgr_sales'];?></span>
+								 </div>
+								 <div class="form-group">
+									<label for="mgr_id">Zipcode :</label>
+									<span><?php echo $mgr_sales[$ref]['mgr_zip'];?></span>
+								 </div>
+							</div><!-- /.box-body -->
+							
+						  </div>
+						  <div class="box">
+							<div class="box-header">
+							  <h3 class="box-title">Manager Location :</h3>
+							</div><!-- /.box-header -->
+							<div class="box-body">
+								 <div id="map"></div>
+							</div><!-- /.box-body -->
+						  </div>
+					</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</section>
+		</div>
+		<script type="text/javascript"> 
+			$.ajaxSetup({
+			  async: false
+			});
+			var dataJSON =[{name:'<?php echo $mgr_sales[$ref]['mgr_name'];?>',sales:<?php echo $mgr_sales[$ref]['mgr_sales'];?>,zip:<?php echo $mgr_sales[$ref]['mgr_zip'];?>}];
+			var latLangApiUrl;
+			var latLangArray=[];
+			for ( dt=0;dt<dataJSON.length;dt++)
+			{
+										
+				latLangApiUrl='http://maps.googleapis.com/maps/api/geocode/json?components=country:IN|postal_code:'+dataJSON[dt].zip;
+
+				$.getJSON(latLangApiUrl,function(outData){
+					var lat=outData.results[0].geometry.location.lat;
+					var longi =outData.results[0].geometry.location.lng;
+					item = {}
+					item ["name"] = dataJSON[dt].name;
+					item ["sales"] = dataJSON[dt].sales;
+					item ["zip"] = dataJSON[dt].zip;
+					item ["lat"] = lat;
+					item ["longi"] =longi;
+					latLangArray.push(item);
+				});
+				mapSetup(latLangArray);
+			}
+			function mapSetup(receiveArray){
+				var zipBtnHtml="";
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 8,
+					center: new google.maps.LatLng(13.0963045, 80.00),
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				});        
+				var bounds = new google.maps.LatLngBounds();
+				var infowindow = new google.maps.InfoWindow();    
+
+				for (i = 0; i < receiveArray.length; i++) { 
+
+				  zipBtnHtml +='<input type="button" id="setZip'+i+'" class="setZip" map-details="'+receiveArray[i].lat+"|"+receiveArray[i].longi+"|"+receiveArray[i].name+"|"+receiveArray[i].sales+"|"+receiveArray[i].zip+'" value="Manager On Zip : '+receiveArray[i].zip+'" onClick="individulMap(this)" />';
+				  var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(receiveArray[i].lat, receiveArray[i].longi),
+					map: map
+				  });
+
+				  //extend the bounds to include each marker's position
+				  bounds.extend(marker.position);
+
+				  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+					  var contentPop ="<div class=popupHolder'><div><label>Mgr Name : </label>"+receiveArray[i].name+"</div><div><label>Mgr Sales : </label>"+receiveArray[i].sales+" (%) </div><div><label>Mgr Zip : </label>"+receiveArray[i].zip+"</div></div>";
+					  infowindow.setContent(contentPop);
+					  infowindow.open(map, marker);
+					}
+				  })(marker, i));
+				}
+				$('#zipCodes').html(zipBtnHtml);
+				//now fit the map to the newly inclusive bounds
+				map.fitBounds(bounds);
+
+				//(optional) restore the zoom level after the map is done scaling
+				var listener = google.maps.event.addListener(map, "map", function () {
+					map.setZoom(3);
+					google.maps.event.removeListener(listener);
+				});
+			}
+
+			function individulMap(cur){
+			  var dtValArray=$(cur).attr('map-details').split('|');
+			  //mapSetup(dtValArray);
+			}
+
+		</script>
+		
+		<footer class="main-footer">	
+			<div class="pull-right hidden-xs">
+			  <b>Test</b> App
+			</div>
+			<strong>Powered by Blasters.</strong> All rights reserved.
+		</footer>	
+	</div><!-- /.wrapper -->
+</div>

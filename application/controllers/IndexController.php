@@ -29,6 +29,11 @@ class IndexController extends Zend_Controller_Action
 		$this->logger->info('Index/Edit');
     }
 	
+	public function viewAction()
+    {
+		$this->logger->info('Index/View');
+    }
+	
 	public function deleteAction()
     {
 		$this->logger->info('Index/Delete');

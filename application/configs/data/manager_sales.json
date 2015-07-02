@@ -1,0 +1,50 @@
+[
+  {
+    "mgr_id": 1000,
+    "mgr_name": "Ragav",
+    "mgr_sales": 40,
+    "mgr_zip": 600010
+  },
+  {
+    "mgr_id": 1001,
+    "mgr_name": "Ranjini",
+    "mgr_sales": 10,
+    "mgr_zip": 600011
+  },
+  {
+    "mgr_id": 1002,
+    "mgr_name": "Ragavendra",
+    "mgr_sales": 20,
+    "mgr_zip": 600012
+  },
+  {
+    "mgr_id": 1003,
+    "mgr_name": "Kamal",
+    "mgr_sales": 30,
+    "mgr_zip": 600013
+  },
+  {
+    "mgr_id": 1004,
+    "mgr_name": "rokesh",
+    "mgr_sales": 60,
+    "mgr_zip": 600014
+  },
+  {
+    "mgr_id": 1005,
+    "mgr_name": "Ranjith",
+    "mgr_sales": 50,
+    "mgr_zip": 600015
+  },
+  {
+    "mgr_id": 1006,
+    "mgr_name": "Ramana",
+    "mgr_sales": 90,
+    "mgr_zip": 600016
+  },
+  {
+    "mgr_id": 1007,
+    "mgr_name": "Apoorv",
+    "mgr_sales": 80,
+    "mgr_zip": 600017
+  }
+]

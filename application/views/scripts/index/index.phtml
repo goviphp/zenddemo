@@ -31,16 +31,20 @@
 				Sales List Page
 				<small>Preview of monthly sales</small>
 			  </h1>
+			  <div class="actionHolder"><a href="Index/add">add</a></div>
 			  <ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li class="active">List Page</li>
 			  </ol>
 			</section>
-			
+			<?php
+			$mgr_sales =Zend_Registry::get('mgr_sales');
+			?>
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
 						<div class="box">
 							<div class="box-header">
 							  <h3 class="box-title">Current Month Sales</h3>
@@ -52,86 +56,37 @@
 								  <th>Manager Name</th>
 								  <th class="text-center">Sales %</th>
 								  <th style="width: 40px">Zipcode</th>
+								  <th style="width: 40px">Details</th>
+								  <th style="width: 40px">Edit</th>
+								  <?php if(count($mgr_sales) > 1 ){?>
+								  <th style="width: 40px">Delete</th>
+								  <?php }?>
 								</tr>
+								<?php 
+								foreach ($mgr_sales as  $key=>$value){
+								?>
 								<tr>
-								  <td>105</td>
-								  <td>James</td>
+								  <td><?php echo $value['mgr_id'];?></td>
+								  <td><?php echo $value['mgr_name'];?></td>
 								  <td class="text-center">
-									72
+									<?php echo $value['mgr_sales'];?>
 								  </td>
-								  <td>36016</td>
+								  <td><?php echo $value['mgr_zip'];?></td>
+								  <td style="width: 40px"><a href="/Index/View?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
+								  <td style="width: 40px"><a href="/Index/Edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
+								  <?php if(count($mgr_sales) > 1 ){?>
+								  <td style="width: 40px" ><i class="fa fa-trash"></i></td>
+								  <?php } ?>
 								</tr>
-								<tr>
-								  <td>102</td>
-								  <td>Williams</td>
-								  <td class="text-center">
-									57
-								  </td>
-								  <td>36048</td>
-								</tr>
-								<tr>
-								  <td>129</td>
-								  <td>Peter</td>
-								  <td class="text-center">
-									84
-								  </td>
-								  <td>56225</td>
-								</tr>
-								<tr>
-								  <td>185</td>
-								  <td>Mark</td>
-								  <td class="text-center">
-									20
-								  </td>
-								  <td>5444</td>
-								</tr>
-								<tr>
-								  <td>166</td>
-								  <td>Helen</td>
-								  <td class="text-center">
-									20
-								  </td>
-								  <td>83025</td>
-								</tr>
-								
-								<tr>
-								  <td>112</td>
-								  <td>Susen</td>
-								  <td class="text-center">
-									- 10
-								  </td>
-								  <td>47638</td>
-								</tr>
-								<tr>
-								  <td>156</td>
-								  <td>Rosely</td>
-								  <td class="text-center">
-									-60
-								  </td>
-								  <td>27906</td>
-								</tr>
-								<tr>
-								  <td>26</td>
-								  <td>Jasmine</td>
-								  <td class="text-center">
-									54
-								  </td>
-								  <td>47620</td>
-								</tr>
-								<tr>
-								  <td>100</td>
-								  <td>Albert</td>
-								  <td class="text-center">
-									20
-								  </td>
-								  <td>83025</td>
-								</tr>
-								
+								<?php
+								}
+								?>								
 							  </tbody></table>
 							</div><!-- /.box-body -->
 							
 						  </div>
 					</div>
+					<div class="col-md-1"></div>
 				</div>
 			</section>
 		</div>

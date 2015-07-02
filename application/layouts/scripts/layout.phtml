@@ -4,13 +4,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>TestApp</title>
-  <?php echo $this->headLink()->appendStylesheet('/css/bootstrap.css') ?>
-  <?php echo $this->headLink()->appendStylesheet('/css/font-awesome.min.css') ?>
-  <?php echo $this->headLink()->appendStylesheet('/css/testapp.css') ?>
+  <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'/css/bootstrap.css') ?>
+  <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'css/font-awesome.min.css') ?>
+  <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'css/testapp.css') ?>
   
   
-  <?php echo $this->headScript()->prependFile( "/js/jQuery-2.1.3.min.js", $type = 'text/javascript' ) ?>
-  <?php echo $this->headScript()->prependFile( "/js/bootstrap.min.js", $type = 'text/javascript' ) ?>
+  <?php echo $this->headScript()->prependFile( MEDIA_PATH."js/jQuery-2.1.3.min.js", $type = 'text/javascript' ) ?>
+  <?php //echo $this->headScript()->prependFile( "https://code.jquery.com/jquery-1.11.2.js", $type = 'text/javascript' ) ?>
+  <?php echo $this->headScript()->prependFile( MEDIA_PATH."js/bootstrap.min.js", $type = 'text/javascript' ) ?>
+   <?php echo $this->headScript()->prependFile( "http://maps.google.com/maps/api/js?sensor=false", $type = 'text/javascript' ) ?>
   
 </head>
 <body>
