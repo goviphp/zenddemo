@@ -31,15 +31,12 @@
 				Sales List Page
 				<small>Preview of monthly sales</small>
 			  </h1>
-			  <div class="actionHolder"><a href="Index/add">add</a></div>
+			  <div class="actionHolder"><a href="<?php echo $this->url(array('controller'=>'index','action'=>'addsales'),'show') ?>">add</a></div>
 			  <ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li class="active">List Page</li>
 			  </ol>
-			</section>
-			<?php
-			$mgr_sales =Zend_Registry::get('mgr_sales');
-			?>
+			</section>                        
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
@@ -58,12 +55,12 @@
 								  <th style="width: 40px">Zipcode</th>
 								  <th style="width: 40px">Details</th>
 								  <th style="width: 40px">Edit</th>
-								  <?php if(count($mgr_sales) > 1 ){?>
+								  <?php if(count($this->mgr_sales) > 1 ){?>
 								  <th style="width: 40px">Delete</th>
 								  <?php }?>
 								</tr>
 								<?php 
-								foreach ($mgr_sales as  $key=>$value){
+								foreach ($this->mgr_sales as  $key=>$value){
 								?>
 								<tr>
 								  <td><?php echo $value['mgr_id'];?></td>
