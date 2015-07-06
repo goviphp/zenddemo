@@ -1,102 +1,66 @@
-<div class="layout-top-nav">
-	<div class="wrapper">
-		<header class="main-header">               
-			<nav class="navbar navbar-static-top">
-			  <div class="container-fluid">
-				  <div class="navbar-header">
-					<a href="#" class="navbar-brand"><b>Test</b>App</a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-					  <i class="fa fa-bars"></i>
-					</button>
+<div class="content-wrapper" style="min-height: 900px;">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+	  <h1>
+		Sales List Page
+		<small>Preview of monthly sales</small>
+	  </h1>
+	  <div class="actionHolder"><a href="Index/add">add</a></div>
+	  <ol class="breadcrumb">
+		<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">List Page</li>
+	  </ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="box">
+					<div class="box-header">
+					  <h3 class="box-title">Current Month Sales</h3>
+					</div><!-- /.box-header -->
+					<div class="box-body">
+					  <table class="table table-bordered">
+						<tbody><tr>
+						  <th style="width: 10px">Id</th>
+						  <th>Manager Name</th>
+						  <th class="text-center">Sales %</th>
+						  <th style="width: 40px">Zipcode</th>
+						  <th style="width: 40px">Details</th>
+						  <th style="width: 40px">Edit</th>
+						  <?php if(count($this->mgr_sales) > 1 ){?>
+						  <th style="width: 40px">Delete</th>
+						  <?php }?>
+						</tr>
+						<?php 
+						foreach ($this->mgr_sales as  $key=>$value){
+						?>
+						<tr>
+						  <td><?php echo $value['mgr_id'];?></td>
+						  <td><?php echo $value['mgr_name'];?></td>
+						  <td class="text-center">
+							<?php echo $value['mgr_sales'];?>
+						  </td>
+						  <td><?php echo $value['mgr_zip'];?></td>
+						  <td style="width: 40px"><a href="/Index/View?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
+						  <td style="width: 40px"><a href="/Index/Edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
+						  <?php if(count($this->mgr_sales) > 1 ){?>
+						  <td style="width: 40px" ><i class="fa fa-trash"></i></td>
+						  <?php } ?>
+						</tr>
+						<?php
+						}
+						?>								
+					  </tbody></table>
+					</div><!-- /.box-body -->
+					
 				  </div>
-
-				  <div class="collapse navbar-collapse" id="navbar-collapse">            
-					<ul class="nav navbar-nav navbar-right">
-					  <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello Administrator! <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="/logout">Logout</a></li>
-						</ul>
-					  </li>
-					</ul>
-				  </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
-			</nav>
-		</header>
-	
-		<div class="content-wrapper" style="min-height: 900px;">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-			  <h1>
-				Sales List Page
-				<small>Preview of monthly sales</small>
-			  </h1>
-			  <div class="actionHolder"><a href="Index/add">add</a></div>
-			  <ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">List Page</li>
-			  </ol>
-			</section>
-			<?php
-			$mgr_sales =Zend_Registry::get('mgr_sales');
-			?>
-			<!-- Main content -->
-			<section class="content">
-				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-10">
-						<div class="box">
-							<div class="box-header">
-							  <h3 class="box-title">Current Month Sales</h3>
-							</div><!-- /.box-header -->
-							<div class="box-body">
-							  <table class="table table-bordered">
-								<tbody><tr>
-								  <th style="width: 10px">Id</th>
-								  <th>Manager Name</th>
-								  <th class="text-center">Sales %</th>
-								  <th style="width: 40px">Zipcode</th>
-								  <th style="width: 40px">Details</th>
-								  <th style="width: 40px">Edit</th>
-								  <?php if(count($mgr_sales) > 1 ){?>
-								  <th style="width: 40px">Delete</th>
-								  <?php }?>
-								</tr>
-								<?php 
-								foreach ($mgr_sales as  $key=>$value){
-								?>
-								<tr>
-								  <td><?php echo $value['mgr_id'];?></td>
-								  <td><?php echo $value['mgr_name'];?></td>
-								  <td class="text-center">
-									<?php echo $value['mgr_sales'];?>
-								  </td>
-								  <td><?php echo $value['mgr_zip'];?></td>
-								  <td style="width: 40px"><a href="/Index/View?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
-								  <td style="width: 40px"><a href="/Index/Edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
-								  <?php if(count($mgr_sales) > 1 ){?>
-								  <td style="width: 40px" ><i class="fa fa-trash"></i></td>
-								  <?php } ?>
-								</tr>
-								<?php
-								}
-								?>								
-							  </tbody></table>
-							</div><!-- /.box-body -->
-							
-						  </div>
-					</div>
-					<div class="col-md-1"></div>
-				</div>
-			</section>
-		</div>
-		
-		
-		<footer class="main-footer">	
-			<div class="pull-right hidden-xs">
-			  <b>Test</b> App
 			</div>
-			<strong>Powered by Blasters.</strong> All rights reserved.
-		</footer>	
-	</div><!-- /.wrapper -->
+			<div class="col-md-1"></div>
+		</div>
+	</section>
 </div>
+		
+		
+		

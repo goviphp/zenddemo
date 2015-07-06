@@ -1,91 +1,55 @@
-<div class="layout-top-nav">
-	<div class="wrapper">
-		<header class="main-header">               
-			<nav class="navbar navbar-static-top">
-			  <div class="container-fluid">
-				  <div class="navbar-header">
-					<a href="#" class="navbar-brand"><b>Test</b>App</a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-					  <i class="fa fa-bars"></i>
-					</button>
-				  </div>
-
-				  <div class="collapse navbar-collapse" id="navbar-collapse">            
-					<ul class="nav navbar-nav navbar-right">
-					  <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello Administrator! <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="/logout">Logout</a></li>
-						</ul>
-					  </li>
-					</ul>
-				  </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
-			</nav>
-		</header>
-	
-		<div class="content-wrapper" style="min-height: 900px;">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-			  <h1>
-				Edit Page
-				<small>form to enter Sales Details</small>
-			  </h1>
-			  <ol class="breadcrumb">
-				<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">Edit Page</li>
-			  </ol>
-			</section>
-			<?php
-				$mgr_sales =Zend_Registry::get('mgr_sales');
-				$request = new Zend_Controller_Request_Http();
-				$ref = $request->getParam('ref');
-			?>
-			<!-- Main content -->
-			<section class="content">
-				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-10">
-						<div class="box">
-							<div class="box-header">
-							  <h3 class="box-title">Edit Sales Form </h3>
-							</div><!-- /.box-header -->
-							<div class="box-body">
-								<form role="form">
-								  <div class="form-group">
-									<label for="mgr_id">Id :</label>
-									<input type="text" class="form-control" id="mgr_id" value="<?php echo $mgr_sales[$ref]['mgr_id'];?>" disabled>
-								  </div>
-								  <div class="form-group">
-									<label for="mgr_name">Name :</label>
-									<input type="text" class="form-control" id="mgr_name" value="<?php echo $mgr_sales[$ref]['mgr_name'];?>">
-								  </div>
-								  <div class="form-group">
-									<label for="mgr_sales">Sales ( % ) :</label>
-									<input type="text" class="form-control" id="mgr_sales" value="<?php echo $mgr_sales[$ref]['mgr_sales'];?>">
-								  </div>
-								  <div class="form-group">
-									<label for="mgr_zip">Zipcode :</label>
-									<input type="text" class="form-control" id="mgr_zip" value="<?php echo $mgr_sales[$ref]['mgr_zip'];?>">
-								  </div>
-								  <button type="submit" class="btn btn-default">Update</button>
-								</form>
-							 
-							</div><!-- /.box-body -->
-							
+<div class="content-wrapper" style="min-height: 900px;">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+	  <h1>
+		Edit Page
+		<small>form to enter Sales Details</small>
+	  </h1>
+	  <ol class="breadcrumb">
+		<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Edit Page</li>
+	  </ol>
+	</section>
+	<?php
+		$mgr_sales =Zend_Registry::get('mgr_sales');
+		$request = new Zend_Controller_Request_Http();
+		$ref = $request->getParam('ref');
+	?>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="box">
+					<div class="box-header">
+					  <h3 class="box-title">Edit Sales Form </h3>
+					</div><!-- /.box-header -->
+					<div class="box-body">
+						<form role="form">
+						  <div class="form-group">
+							<label for="mgr_id">Id :</label>
+							<input type="text" class="form-control" id="mgr_id" value="<?php echo $mgr_sales[$ref]['mgr_id'];?>" disabled>
 						  </div>
-					</div>
-					<div class="col-md-1"></div>
-				</div>
-			</section>
-		</div>
-		
-		
-		<footer class="main-footer">	
-			<div class="pull-right hidden-xs">
-			  <b>Test</b> App
+						  <div class="form-group">
+							<label for="mgr_name">Name :</label>
+							<input type="text" class="form-control" id="mgr_name" value="<?php echo $mgr_sales[$ref]['mgr_name'];?>">
+						  </div>
+						  <div class="form-group">
+							<label for="mgr_sales">Sales ( % ) :</label>
+							<input type="text" class="form-control" id="mgr_sales" value="<?php echo $mgr_sales[$ref]['mgr_sales'];?>">
+						  </div>
+						  <div class="form-group">
+							<label for="mgr_zip">Zipcode :</label>
+							<input type="text" class="form-control" id="mgr_zip" value="<?php echo $mgr_sales[$ref]['mgr_zip'];?>">
+						  </div>
+						  <button type="submit" class="btn btn-default">Update</button>
+						</form>
+					 
+					</div><!-- /.box-body -->
+					
+				  </div>
 			</div>
-			<strong>Powered by Blasters.</strong> All rights reserved.
-		</footer>	
-	</div><!-- /.wrapper -->
+			<div class="col-md-1"></div>
+		</div>
+	</section>
 </div>

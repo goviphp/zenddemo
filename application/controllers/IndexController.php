@@ -16,12 +16,19 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
 		$this->logger->info('Index/List');
     }
 	
 	public function addAction()
     {
-		$this->logger->info('Index/Add');
+		/*$submittedVal =json_encode($this->getRequest()->getPost());
+		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
+		$tmpArr =$this->view->mgr_sales;
+		array_push($tmpArr,$this->getRequest()->getPost());
+		//echo json_encode($tmpArr);
+		$json = json_decode(file_get_contents(json_encode($tmpArr)), true);
+		$this->logger->info('Index/Add');*/
     }
 	
 	public function editAction()

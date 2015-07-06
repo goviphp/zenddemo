@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>TestApp</title>
+  <title>Salesman Info</title>
   <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'/css/bootstrap.css') ?>
   <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'css/font-awesome.min.css') ?>
   <?php echo $this->headLink()->appendStylesheet(MEDIA_PATH.'css/testapp.css') ?>
@@ -16,8 +16,40 @@
   
 </head>
 <body>
- 
-<?php echo $this->layout()->content ?>
+<div class="layout-top-nav">
+	<div class="wrapper">
+		<header class="main-header">               
+			<nav class="navbar navbar-static-top">
+			  <div class="container-fluid">
+				  <div class="navbar-header">
+					<a href="/Index" class="navbar-brand"><b>Salesman </b>Info</a>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					  <i class="fa fa-bars"></i>
+					</button>
+				  </div>
 
+				  <div class="collapse navbar-collapse" id="navbar-collapse">            
+					<ul class="nav navbar-nav navbar-right">
+					  <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello Administrator! <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						  <li><a href="/logout">Logout</a></li>
+						</ul>
+					  </li>
+					</ul>
+				  </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</header>
+ 
+		<?php echo $this->layout()->content ?>
+		<footer class="main-footer">	
+			<div class="pull-right hidden-xs">
+			  <b>Salesman </b>Info
+			</div>
+			<strong>Powered by Blasters.</strong> All rights reserved.
+		</footer>	
+	</div><!-- /.wrapper -->
+</div>
 </body>
 </html>
