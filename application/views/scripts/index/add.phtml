@@ -23,20 +23,20 @@
 					<div class="box-body">
 						<form role="form" method="POST" action="/Index/add">
 						  <div class="form-group">
-							<label for="mgr_id">Id :</label>
-							<input type="text" class="form-control" id="mgr_id" name="mgr_id" >
+							<label for="mgr_id"><span class="validationNeed">*</span>Id :</label>
+							<input type="number" class="form-control" id="mgr_id" name="mgr_id" required >
 						  </div>
 						  <div class="form-group">
-							<label for="mgr_name">Name :</label>
-							<input type="text" class="form-control" id="mgr_name" name="mgr_name">
+							<label for="mgr_name"><span class="validationNeed">*</span>Name :</label>
+							<input type="text" class="form-control" id="mgr_name" name="mgr_name" required>
 						  </div>
 						  <div class="form-group">
-							<label for="mgr_sales">Sales ( % ) :</label>
-							<input type="text" class="form-control" id="mgr_sales" name="mgr_sales">
+							<label for="mgr_sales"><span class="validationNeed">*</span>Sales ( % ) :</label>
+							<input type="number" max="2" min="2" class="form-control" id="mgr_sales" name="mgr_sales" required>
 						  </div>
 						  <div class="form-group">
-							<label for="mgr_zip">Zipcode :</label>
-							<input type="text" class="form-control" id="mgr_zip" name="mgr_zip">
+							<label for="mgr_zip"><span class="validationNeed">*</span>Zipcode :</label>
+							<input type="number" max="6" min="6" class="form-control" id="mgr_zip" name="mgr_zip" required>
 						  </div>
 						  <button type="submit" class="btn btn-default">Add</button>
 						</form>

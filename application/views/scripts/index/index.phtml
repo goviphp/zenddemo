@@ -43,10 +43,10 @@
 							<?php echo $value['mgr_sales'];?>
 						  </td>
 						  <td><?php echo $value['mgr_zip'];?></td>
-						  <td style="width: 40px"><a href="/Index/View?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
-						  <td style="width: 40px"><a href="/Index/Edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
+						  <td style="width: 40px"><a href="/Index/view?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
+						  <td style="width: 40px"><a href="/Index/edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
 						  <?php if(count($this->mgr_sales) > 1 ){?>
-						  <td style="width: 40px" ><i class="fa fa-trash"></i></td>
+						  <td style="width: 40px" ><a href="/Index/delete?ref=<?php echo $key;?>"><i class="fa fa-trash"></i></a></td>
 						  <?php } ?>
 						</tr>
 						<?php

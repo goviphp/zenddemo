@@ -17,33 +17,62 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
 		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
-		$this->logger->info('Index/List');
     }
 	
 	public function addAction()
     {
-		/*$submittedVal =json_encode($this->getRequest()->getPost());
 		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
 		$tmpArr =$this->view->mgr_sales;
-		array_push($tmpArr,$this->getRequest()->getPost());
-		//echo json_encode($tmpArr);
-		$json = json_decode(file_get_contents(json_encode($tmpArr)), true);
-		$this->logger->info('Index/Add');*/
+		if(sizeof($this->getRequest()->getPost()) > 0){
+			array_push($tmpArr,$this->getRequest()->getPost());
+			$fp = fopen(DATA_PATH."/manager_sales.json", 'w');
+			fwrite($fp, json_encode($tmpArr));
+			fclose($fp);
+			$this->_redirect('index');
+		}
     }
 	
 	public function editAction()
     {
-		$this->logger->info('Index/Edit');
+		$originalVal =$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
+		$request = new Zend_Controller_Request_Http();
+		$ref = $request->getParam('ref');
+		if(sizeof($this->getRequest()->getPost()) > 0){
+			$originalVal[$ref]=$this->getRequest()->getPost();
+			$fp = fopen(DATA_PATH."/manager_sales.json", 'w');
+			fwrite($fp, json_encode($originalVal));
+			fclose($fp);
+			$this->_redirect('index');
+		}
     }
 	
 	public function viewAction()
     {
 		$this->logger->info('Index/View');
+		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
     }
 	
 	public function deleteAction()
     {
-		$this->logger->info('Index/Delete');
+		$originalVal =$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
+		$request = new Zend_Controller_Request_Http();
+		$ref = $request->getParam('ref');
+		$originalVal = $this->array_delete($ref, $originalVal);
+		$fp = fopen(DATA_PATH."/manager_sales.json", 'w');
+		fwrite($fp, json_encode($originalVal));
+		fclose($fp);
     }
+
+	/* 
+	$del_val as a key to delete from an $array
+	*/
+	public function array_delete($del_val, $array) {
+		foreach ($array as $key => $value){
+			if ($key == $del_val) {
+				unset($array[$key]);
+			}
+		}
+		return array_values($array);
+	}
 }
 
