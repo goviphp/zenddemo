@@ -21,18 +21,21 @@
 					  <h3 class="box-title">Current Month Sales</h3>
 					</div><!-- /.box-header -->
 					<div class="box-body">
-					  <table class="table table-bordered">
-						<tbody><tr>
-						  <th style="width: 10px">Id</th>
-						  <th>Manager Name</th>
-						  <th class="text-center">Sales %</th>
-						  <th style="width: 40px">Zipcode</th>
-						  <th style="width: 40px">Details</th>
-						  <th style="width: 40px">Edit</th>
-						  <?php if(count($this->mgr_sales) > 1 ){?>
-						  <th style="width: 40px">Delete</th>
-						  <?php }?>
-						</tr>
+					  <table id="tblSalesInfo" class="table table-bordered">
+						<thead>
+							<tr>
+							  <th style="width: 10px">Id</th>
+							  <th>Manager Name</th>
+							  <th class="text-center">Sales %</th>
+							  <th style="width: 40px">Zipcode</th>
+							  <th style="width: 40px">Details</th>
+							  <th style="width: 40px">Edit</th>
+							  <?php if(count($this->mgr_sales) > 1 ){?>
+							  <th style="width: 40px">Delete</th>
+							  <?php }?>
+							</tr>
+						</thead>
+						<tbody>
 						<?php 
 						foreach ($this->mgr_sales as  $key=>$value){
 						?>
@@ -61,6 +64,15 @@
 		</div>
 	</section>
 </div>
+
+<script>
+$(function(){
+	$('#tblSalesInfo').DataTable();
+});
+$(document).ready(function(){
+   // $('#tblSalesInfo').DataTable();
+});
+</script>
 		
 		
 		

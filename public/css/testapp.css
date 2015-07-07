@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .wrapper, .main-sidebar, .left-side {
-  background: #222d32;
+  /* background: #222d32; */
 }
 
 .wrapper:before, .wrapper:after {
@@ -300,6 +300,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .login-page  .form-group {
   display: block;
   padding: 0px;
+  width: 100%;
 }
 .deleteWrapper .box {
   text-align: center;
