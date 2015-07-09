@@ -5,19 +5,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Salesman Info</title>
   <?php 
-	$this->headLink()->appendStylesheet(MEDIA_PATH.'css/bootstrap.css'); 
-	$this->headLink()->appendStylesheet(MEDIA_PATH.'css/font-awesome.min.css');
-	$this->headLink()->appendStylesheet(MEDIA_PATH.'css/testapp.css');
-	$this->headLink()->appendStylesheet(MEDIA_PATH.'css/jquery.dataTables.min.css');
+	$this->headLink()->appendStylesheet('/css/bootstrap.css'); 
+	$this->headLink()->appendStylesheet('/css/font-awesome.min.css');
+	$this->headLink()->appendStylesheet('/css/testapp.css');
+	$this->headLink()->appendStylesheet('/css/jquery.dataTables.min.css');
 	
 	// rendering the links from the layout:
 	echo $this->headLink();
   ?>
 
   <?php 
-	$this->headScript()->appendFile(MEDIA_PATH."js/jQuery-2.1.3.min.js");
-	$this->headScript()->appendFile(MEDIA_PATH."js/bootstrap.min.js");
-	$this->headScript()->appendFile(MEDIA_PATH."js/jquery.dataTables.min.js");
+	$this->headScript()->appendFile("/js/jQuery-2.1.3.min.js");
+	$this->headScript()->appendFile("/js/bootstrap.min.js");
+	$this->headScript()->appendFile("/js/jquery.dataTables.min.js");
 	
 	// rendering the script from the layout:
 	echo $this->headScript();

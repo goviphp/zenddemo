@@ -1,9 +1,8 @@
-<div class="content-wrapper" style="min-height: 900px;">
+<div class="content-wrapper" >
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 	  <h1>
-		Sales List Page
-		<small>Preview of monthly sales</small>
+		List Page		
 	  </h1>
 	  <div class="actionHolder"><a href="Index/add">add</a></div>
 	  <ol class="breadcrumb">
@@ -46,10 +45,10 @@
 							<?php echo $value['mgr_sales'];?>
 						  </td>
 						  <td><?php echo $value['mgr_zip'];?></td>
-						  <td style="width: 40px"><a href="/Index/view?ref=<?php echo $key;?>"><i class="fa fa-list"></i></td>
-						  <td style="width: 40px"><a href="/Index/edit?ref=<?php echo $key;?>"><i class="fa fa-edit"></i></td>
+						  <td style="width: 40px; text-align:center;"><a href="/Index/view/ref/<?php echo $key;?>"><i class="fa fa-list"></i></td>
+						  <td style="width: 40px; text-align:center;"><a href="/Index/edit/ref/<?php echo $key;?>"><i class="fa fa-edit"></i></td>
 						  <?php if(count($this->mgr_sales) > 1 ){?>
-						  <td style="width: 40px" ><a href="/Index/delete?ref=<?php echo $key;?>"><i class="fa fa-trash"></i></a></td>
+						  <td style="width: 40px; text-align:center;" ><a onClick="javascript:return confirm('Are you sure?');" href="/Index/delete/ref/<?php echo $key;?>"><i class="fa fa-trash"></i></a></td>
 						  <?php } ?>
 						</tr>
 						<?php

@@ -1,21 +1,18 @@
-<div class="content-wrapper" style="min-height: 900px;">
+<div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 	  <h1>
-		Sales View Page
-		<small>Preview of monthly sales</small>
+		Details Page		
 	  </h1>
 	  <ol class="breadcrumb">
 		<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">View Page</li>
+		<li class="active">Details Page</li>
 	  </ol>
 	</section>
 	<?php
-		$mgr_sales =Zend_Registry::get('mgr_sales');
-		$request = new Zend_Controller_Request_Http();
-		$ref = $request->getParam('ref');
+		$mgr_sales =$this->mgr_sales;		
+		$ref = $this->ref;
 	?>
-	
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">
@@ -87,7 +84,7 @@
 	function mapSetup(receiveArray){
 		var zipBtnHtml="";
 		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 8,
+			zoom: 10,
 			center: new google.maps.LatLng(13.0963045, 80.00),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		});        
@@ -119,7 +116,7 @@
 
 		//(optional) restore the zoom level after the map is done scaling
 		var listener = google.maps.event.addListener(map, "map", function () {
-			map.setZoom(3);
+			map.setZoom(0);
 			google.maps.event.removeListener(listener);
 		});
 	}

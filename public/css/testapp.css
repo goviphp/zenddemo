@@ -174,7 +174,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .content-wrapper, .right-side {
   min-height: 100%;
-  background-color: #ecf0f5;
   z-index: 800;
 }
 .content-header>h1 {
@@ -206,6 +205,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 15px;
   color: #444;
   border-top: 1px solid #eee;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .content {

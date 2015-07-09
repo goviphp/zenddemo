@@ -34,11 +34,10 @@ class IndexController extends Zend_Controller_Action
 	
 	public function editAction()
     {
-		$originalVal =$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
-		$request = new Zend_Controller_Request_Http();
-		$ref = $request->getParam('ref');
+		$originalVal = $this->view->mgr_sales =Zend_Registry::get('mgr_sales');
+		$this->view->ref = $this->getRequest()->getParam('ref');
 		if(sizeof($this->getRequest()->getPost()) > 0){
-			$originalVal[$ref]=$this->getRequest()->getPost();
+			$originalVal[$this->view->ref]=$this->getRequest()->getPost();
 			$fp = fopen(DATA_PATH."/manager_sales.json", 'w');
 			fwrite($fp, json_encode($originalVal));
 			fclose($fp);
@@ -50,14 +49,15 @@ class IndexController extends Zend_Controller_Action
     {
 		$this->logger->info('Index/View');
 		$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
+		$this->view->ref = $this->getRequest()->getParam('ref');
     }
 	
 	public function deleteAction()
     {
 		$originalVal =$this->view->mgr_sales =Zend_Registry::get('mgr_sales');
 		$request = new Zend_Controller_Request_Http();
-		$ref = $request->getParam('ref');
-		$originalVal = $this->array_delete($ref, $originalVal);
+		$this->view->ref = $this->getRequest()->getParam('ref');
+		$originalVal = $this->array_delete($this->view->ref, $originalVal);
 		$fp = fopen(DATA_PATH."/manager_sales.json", 'w');
 		fwrite($fp, json_encode($originalVal));
 		fclose($fp);

@@ -1,9 +1,8 @@
-<div class="content-wrapper" style="min-height: 900px;">
+<div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 	  <h1>
 		Edit Page
-		<small>form to enter Sales Details</small>
 	  </h1>
 	  <ol class="breadcrumb">
 		<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -11,9 +10,8 @@
 	  </ol>
 	</section>
 	<?php
-		$mgr_sales =Zend_Registry::get('mgr_sales');
-		$request = new Zend_Controller_Request_Http();
-		$ref = $request->getParam('ref');
+		$mgr_sales =$this->mgr_sales;		
+		$ref = $this->ref;
 	?>
 	<!-- Main content -->
 	<section class="content">
@@ -25,7 +23,7 @@
 					  <h3 class="box-title">Edit Sales Form </h3>
 					</div><!-- /.box-header -->
 					<div class="box-body">
-						<form role="form" method="POST" action="/Index/edit?ref=<?php echo $ref;?>">
+						<form role="form" method="POST" action="/Index/edit/ref/<?php echo $ref;?>">
 						  <div class="form-group">
 							<label for="mgr_id">Id :</label>
 							<input type="number" class="form-control" id="mgr_id" name="mgr_id" value="<?php echo $mgr_sales[$ref]['mgr_id'];?>" readonly >
@@ -36,7 +34,7 @@
 						  </div>
 						  <div class="form-group">
 							<label for="mgr_sales"><span class="validationNeed">*</span>Sales ( % ) :</label>
-							<input type="number" maxlength="2" class="form-control" id="mgr_sales" name="mgr_sales" value="<?php echo $mgr_sales[$ref]['mgr_sales'];?>" required>
+							<input type="number" maxlength="2" min="1" max="100" class="form-control" id="mgr_sales" name="mgr_sales" value="<?php echo $mgr_sales[$ref]['mgr_sales'];?>" required>
 						  </div>
 						  <div class="form-group">
 							<label for="mgr_zip"><span class="validationNeed">*</span>Zipcode :</label>

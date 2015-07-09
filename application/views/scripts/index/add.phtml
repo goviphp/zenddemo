@@ -1,9 +1,8 @@
-<div class="content-wrapper" style="min-height: 900px;">
+<div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 	  <h1>
 		Add Page
-		<small>form to enter Sales Details</small>
 	  </h1>
 	  <ol class="breadcrumb">
 		<li><a href="/Index"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -32,7 +31,7 @@
 						  </div>
 						  <div class="form-group">
 							<label for="mgr_sales"><span class="validationNeed">*</span>Sales ( % ) :</label>
-							<input type="number" maxlength="2" class="form-control" id="mgr_sales" name="mgr_sales" required>
+							<input type="number" maxlength="2" min="1" max="100" class="form-control" id="mgr_sales" name="mgr_sales" required>
 						  </div>
 						  <div class="form-group">
 							<label for="mgr_zip"><span class="validationNeed">*</span>Zipcode :</label>
