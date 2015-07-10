@@ -84,7 +84,7 @@
 	function mapSetup(receiveArray){
 		var zipBtnHtml="";
 		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 10,
+			zoom: 8,
 			center: new google.maps.LatLng(13.0963045, 80.00),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		});        
@@ -99,9 +99,6 @@
 			map: map
 		  });
 
-		  //extend the bounds to include each marker's position
-		  bounds.extend(marker.position);
-
 		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
 			  var contentPop ="<div class=popupHolder'><div><label>Mgr Name : </label>"+receiveArray[i].name+"</div><div><label>Mgr Sales : </label>"+receiveArray[i].sales+" (%) </div><div><label>Mgr Zip : </label>"+receiveArray[i].zip+"</div></div>";
@@ -111,19 +108,6 @@
 		  })(marker, i));
 		}
 		$('#zipCodes').html(zipBtnHtml);
-		//now fit the map to the newly inclusive bounds
-		map.fitBounds(bounds);
-
-		//(optional) restore the zoom level after the map is done scaling
-		var listener = google.maps.event.addListener(map, "map", function () {
-			map.setZoom(0);
-			google.maps.event.removeListener(listener);
-		});
+		map.setCenter(marker.getPosition());
 	}
-
-	function individulMap(cur){
-	  var dtValArray=$(cur).attr('map-details').split('|');
-	  //mapSetup(dtValArray);
-	}
-
 </script>
