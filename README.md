@@ -8,7 +8,7 @@ A test app using the Zend framework.
 ## Configurations:
 Note: I have installed XAMPP on my Windows D: drive.
 
-1.  Clone the repo into htdocs folder (D:\xampp\htdocs)	
+1.  Clone the repo (or extract zenddemo.zip) into htdocs folder (D:\xampp\htdocs)	
 	- skeleton application 
 	
 2. Set Environment variable in PATH (;D:\xampp\php)
