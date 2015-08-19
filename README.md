@@ -9,6 +9,7 @@ A test app using the Zend framework.
 Note: I have installed XAMPP on my Windows D: drive.
 
 Git URL: https://github.com/goviphp/zenddemo.git
+
 1.  Clone the repo (or extract zenddemo.zip) into htdocs folder (D:\xampp\htdocs)	
 	- skeleton application 
 	
